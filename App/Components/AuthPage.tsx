@@ -1,8 +1,9 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import React, { FC } from 'react';
+import React, { FC, useEffect } from 'react';
 import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import {
+  StyleSheet,
   Text,
   View,
   TextInput,
@@ -19,7 +20,7 @@ const AuthPage: FC = () => {
   const [emailError, setEmailError] = useState('');
   const [passwordError, setPasswordError] = useState('');
   const [error, setError] = useState('');
-  const dispatch = useDispatch();
+  const dispatch: any = useDispatch();
 
   const handleAuth = async () => {
     if (email && password) {
@@ -47,6 +48,7 @@ const AuthPage: FC = () => {
       <TextInput
         value={email}
         placeholder="Email..."
+        name="email"
         onChangeText={setEmail}
       />
 
@@ -55,6 +57,7 @@ const AuthPage: FC = () => {
       <TextInput
         value={password}
         placeholder="Password..."
+        name="pass"
         onChangeText={setPassword}
       />
 
